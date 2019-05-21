@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RestaurantNew.Models.Menu>
+
+@{
+    ViewBag.Title = "List";
+}
+<style>
+
+    body {
+        background: url('../../Image/Menu.jpeg') no-repeat center center fixed;
+       
+        
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Disserts", "Menus", FormMethod.Get))
+            {
+                    <br />
+                    <button type="submit">
+                        <img src="~/Image/Menu/Disserts.png" width="600" height="100" />
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Drinks", "Menus", FormMethod.Get))
+            {
+                    <br />
+                    <button type="submit">
+                        <img src="~/Image/Menu/Drinks.png" width="600" height="100" />
+                    </button>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Maindishes", "Menus", FormMethod.Get))
+            {
+                    <br />
+                    <button type="submit">
+                        <img src="~/Image/Menu/Maindishes.png" width="600" height="100" />
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Starters", "Menus", FormMethod.Get))
+            {
+                    <br />
+                    <button type="submit">
+                        <img src="~/Image/Menu/Starters.png" width="600" height="100" />
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</body>

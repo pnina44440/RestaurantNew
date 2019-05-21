@@ -1,0 +1,101 @@
+﻿@model IEnumerable<RestaurantNew.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    body {
+        background: url('../../Image/Menu.jpeg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .product {
+        background-color: #ffffffb8;
+        border-radius: 15px;
+        padding: 20px 5px;
+        margin-bottom: 20px;
+    }
+
+    .product > img {
+        border-radius: 15px;
+        box-shadow: 0 0 17px 3px #78767d;
+        transition: all 280ms linear;
+    }
+
+        .product:hover > img{
+            box-shadow: 0 0 12px 10px #78767d;
+        }
+
+        .product:hover > p > span {
+            transition: all 280ms linear;
+            
+            font-weight: bold;
+        }
+
+</style>
+<body >
+    <div class="container ">
+        <br />
+        <div class="row text-center">
+            @foreach (var item in Model)
+            { 
+                
+            <div class="col-md-4 ">
+                <div class="product">
+                    <img src="@item.ImageUri" style="width:300px ; height:200px" />
+                    <p id="item">
+                        <br />
+                        <strong> @item.NameDose</strong>
+                        <br />
+                        @item.Description
+                        <br />
+                        <span> @item.Price₪</span>
+                        <br />
+                    </p>
+                    @using Microsoft.AspNet.Identity
+                    @if (Request.IsAuthenticated)
+                    {
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
+
+                    }
+                </div>
+
+            </div>
+                }
+            </div>
+        <br />
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-shopping-cart"></span> Tickets</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="psw"> How many?</label>
+                            <input type="number" class="form-control" id="count" placeholder="">
+                        </div>
+
+                        <button onclick="addToOrder()" class="btn btn-block">
+                            Pay
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

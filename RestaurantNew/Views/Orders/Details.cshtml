@@ -1,0 +1,50 @@
+﻿@model RestaurantNew.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Menus.NameDose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menus.NameDose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdClub)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClub)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateForDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateForDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Count)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrder }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

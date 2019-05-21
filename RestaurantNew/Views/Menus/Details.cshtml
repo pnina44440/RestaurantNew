@@ -1,0 +1,64 @@
+﻿@model RestaurantNew.Models.Menu
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <div class="container ">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 ">
+                    <img src="@item.ImageUri" style="width:300px ; height:200px" />
+                    <p id="item">
+                        <br />
+                        <strong> @item.NameDose</strong>
+                        <br />
+                        @item.Description
+                        <br />
+                        @item.Price
+                        <br />
+                    </p>
+                    <!-- Used to open the Modal -->
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
+                    <br />
+                </div>         
+            }
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-shopping-cart"></span> Tickets</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="psw"> How many?</label>
+                            <input type="number" class="form-control" id="count" placeholder="">
+                        </div>
+                        @using (Html.BeginForm("Create", "Orders", FormMethod.Post))
+                        {
+                        <button class="btn btn-block">
+                            Pay
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        }
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

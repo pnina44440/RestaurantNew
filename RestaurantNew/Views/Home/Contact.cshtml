@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<body style="background-color:darkgray ; ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div id="map" style="width:100%;height:460px"></div>
+            </div>
+            <div class="col-md-6 ">
+                <h3> Our Branches</h3>
+                <ul style="list-style-type:disc">
+                    <li>
+                        <h4>Jerusalem</h4>
+                        <h5>King Gorg St.</h5>
+                    </li>
+                    <br />
+                    <li>
+                        <h4>Tel-Aviv</h4>
+                        <h5>Dizingoph St.</h5>
+                    </li>
+                    <br />
+                    <li>
+                        <h4>Herzelya</h4>
+                        <h5>Shenkar St.</h5>
+                    </li>
+                    <br />
+                    <li>
+                        <h4>Karmiel</h4>
+                        <h5>Yossef St.</h5>
+                    </li>
+                    <br />
+                    <li>
+                        <h4>Haifa</h4>
+                        <h5>Hrzel St.</h5>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+                    function myMap() {
+                        var mapCanvas = document.getElementById("map");
+                        var myCenter = new google.maps.LatLng(31.771959, 35.217018);
+                        var TelAviv = new google.maps.LatLng(32.109333, 34.855499);
+                        var Haifa = new google.maps.LatLng(32.794044, 34.989571);
+                        var Herzelya = new google.maps.LatLng(32.166313, 34.843311);
+                        var Karmiel = new google.maps.LatLng(32.919945, 35.290146);
+                        var mapOptions = { center: myCenter, zoom: 5 };
+                        var map = new google.maps.Map(mapCanvas, mapOptions);
+                        var marker = new google.maps.Marker({
+                            position: myCenter,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        var marker2 = new google.maps.Marker({
+                            position: TelAviv,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        var marker3 = new google.maps.Marker({
+                            position: Haifa,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        var marker4 = new google.maps.Marker({
+                            position: Herzelya,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        var marker5 = new google.maps.Marker({
+                            position: Karmiel,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+                        marker.setMap(map);
+                        marker2.setMap(map);
+                        marker3.setMap(map);
+                        marker4.setMap(map);
+                        marker5.setMap(map);
+                    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzB34qsIQ1iisAHjqWIsHCj15e2hLxLR4&callback=myMap">
+    </script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->
+
+</body>
+</html>
+
