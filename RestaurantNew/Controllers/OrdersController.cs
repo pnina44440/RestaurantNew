@@ -17,7 +17,7 @@ namespace RestaurantNew.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Menus);
+            var orders = db.Orders.Include(o => o.Menu);
             return View(orders.ToList());
         }
 
@@ -41,14 +41,13 @@ namespace RestaurantNew.Controllers
         public ActionResult Create()
         {
             ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose");
-            return View();
+            return PartialView();
         }
 
         // POST: Orders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdOrder,IdClub,IdMenu,DateForDay,Count")] Order order)
         {
             if (ModelState.IsValid)
@@ -58,7 +57,7 @@ namespace RestaurantNew.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.IdMenu);
+            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.Menu);
             return View(order);
         }
 
@@ -74,7 +73,7 @@ namespace RestaurantNew.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.IdMenu);
+            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.Menu);
             return View(order);
         }
 
@@ -91,7 +90,7 @@ namespace RestaurantNew.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.IdMenu);
+            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.Menu);
             return View(order);
         }
 

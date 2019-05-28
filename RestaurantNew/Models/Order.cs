@@ -9,12 +9,11 @@ namespace RestaurantNew.Models
     public class Order
     {
         [Key]
-        public int IdOrder { get; set; }
-        public int IdClub { get; set; }
-        public int IdMenu { get; set; }
+        public int Id { get; set; }
+        public User User { get; set; }
+        public Menu Menu { get; set; }
         public DateTime DateForDay { get; set; }
         public int Count { get; set; }
-
-        public virtual Menu Menus { get; set; }
+        
     }
 }

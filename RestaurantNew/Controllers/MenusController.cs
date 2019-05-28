@@ -179,5 +179,32 @@ namespace RestaurantNew.Controllers
             }
             base.Dispose(disposing);
         }
+        //public ActionResult InsertToOrder(int id)
+        //{
+        //    Menu menu = db.Menus.Find(id);
+        //    Order neworder = new Order();
+        //   //neworder.Count=menu.
+        //    neworder.IdMenu = menu.IdMenu;
+        //    neworder.DateForDay=DateTime.Now;
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
+        /* public ActionResult Insert([Bind(Include = "IdOrder,IdClub,Menu,DateForDay,Count")] Order neworder)
+        {
+            if (ModelState.IsValid)
+            {
+                Menu menu = db.Menus.Find();
+               // Order neworder = new Order();
+                //neworder.Count=menu.
+                neworder.Menu = menu.IdMenu;
+                neworder.DateForDay = DateTime.Now;
+                db.Orders.Add(neworder);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(neworder);
+        }*/
     }
 }

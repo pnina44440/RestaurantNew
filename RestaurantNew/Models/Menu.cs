@@ -19,14 +19,4 @@ namespace RestaurantNew.Models
         public virtual ICollection<Order> Orders { get; set; }
     }
 
-    public class MenuViewModel
-    {
-        public string NameDose { get; set; }
-        public string Description { get; set; }
-        public int Price { get; set; }
-        public string ImageUri { get; set; }
-
-        [DataType(DataType.Upload)]
-        public HttpPostedFileBase ImageUpload { get; set; }
-    }
 }
