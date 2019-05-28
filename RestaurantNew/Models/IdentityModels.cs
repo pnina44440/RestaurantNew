@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+
+using System.Reflection.Emit;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -30,10 +32,30 @@ namespace RestaurantNew.Models
             return new ApplicationDbContext();
         }
 
+       
         public System.Data.Entity.DbSet<RestaurantNew.Models.City> Cities { get; set; }
 
         public System.Data.Entity.DbSet<RestaurantNew.Models.Menu> Menus { get; set; }
 
         public System.Data.Entity.DbSet<RestaurantNew.Models.Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantNew.Models.CustUser> CustUsers { get; set; }
+
+        //protected override void OnModelCreating(ModuleBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<MenuSale>()
+        //        .HasKey(t => new { t.MenuId, t.SaleId });
+
+        //    modelBuilder.Entity<MenuSale>()
+        //        .HasOne(pt => pt.Menu)
+        //        .WithMany(p => p.MenuSale)
+        //        .HasForeignKey(pt => pt.MenuId);
+
+        //    modelBuilder.Entity<MenuSale>()
+        //        .HasOne(pt => pt.Sale)
+        //        .WithMany(t => t.MenuSale)
+        //        .HasForeignKey(pt => pt.SaleId);
+
+        //}
     }
 }

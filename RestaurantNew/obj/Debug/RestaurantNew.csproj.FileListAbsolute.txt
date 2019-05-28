@@ -339,7 +339,6 @@ C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.OAuth.xm
 C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations._new.resources
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.New2304.resources
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.New_2304.resources

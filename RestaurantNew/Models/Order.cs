@@ -10,7 +10,7 @@ namespace RestaurantNew.Models
     {
         [Key]
         public int Id { get; set; }
-        public User User { get; set; }
+        public CustUser User { get; set; }
         public Menu Menu { get; set; }
         public DateTime DateForDay { get; set; }
         public int Count { get; set; }
