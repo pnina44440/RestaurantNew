@@ -2,57 +2,111 @@
 @{
     ViewBag.Title = "Register";
 }
+<body>
+    <script>
+        function check() {
+            if (Session["User"] != null) {
+                if (document.getElementById("defaultUnchecked").checked == true) {
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-5">
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4>Create a new account.</h4>
-            <hr />
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
+                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+                }
+                else if (document.getElementById("defaultUnchecked").checked == true) {
+
+                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
+                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+                }
+                else if (document.getElementById("defaultUnchecked").checked == true) {
+
+                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
+                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+                }
+                else if (document.getElementById("defaultUnchecked").checked == true) {
+
+                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
+                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+                }
+
+            }
+    </script>
+    <h2>@ViewBag.Title.</h2>
+    <div class="row">
+        <div class="col-md-5">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+
+
+
+
+                @Html.AntiForgeryToken()
+                <h4>Create a new account.</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register" />
+                <h3> declare your position</h3>
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                    <label class="custom-control-label" for="defaultUnchecked">none</label>
                 </div>
-            </div>
-        }
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="defaultExampleRadios">
+                    <label class="custom-control-label" for="defaultUnchecked">solder</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked2" name="defaultExampleRadios">
+                    <label class="custom-control-label" for="defaultUnchecked">student</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked3" name="defaultExampleRadios">
+                    <label class="custom-control-label" for="defaultUnchecked">manager</label>
+                </div>
+                @*@if (Session["User"] != null)
+                    {
+                        @((RestaurantNew.Models.ApplicationUser)Session["User"]).Phone=
+                    }*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Register" onclick="check()" />
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-7">
+            <img src="~/Image/Club.jpeg" width="600" />
+        </div>
     </div>
-    <div class="col-md-7">
-        <img src="~/Image/Club.jpeg" width="600" />
-    </div>
-</div>
+</body>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }

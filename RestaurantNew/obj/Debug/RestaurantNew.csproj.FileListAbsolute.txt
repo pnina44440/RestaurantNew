@@ -340,12 +340,10 @@ C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.Google.x
 C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\student\Desktop\Rest\RestaurantNew\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations._new.resources
-C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.New2304.resources
-C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.New_2304.resources
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.GenerateResource.cache
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CoreCompileInputs.cache
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CopyComplete
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.dll
 C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.pdb
-C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.rn.resources
-C:\Users\student\Desktop\Rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.hemi.resources
+C:\Users\student\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.hadas.resources
+C:\Users\student\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache

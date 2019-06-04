@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace RestaurantNew.Models
 {
@@ -41,21 +42,26 @@ namespace RestaurantNew.Models
 
         public System.Data.Entity.DbSet<RestaurantNew.Models.CustUser> CustUsers { get; set; }
 
-        //protected override void OnModelCreating(ModuleBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<MenuSale>()
-        //        .HasKey(t => new { t.MenuId, t.SaleId });
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        
+            
 
-        //    modelBuilder.Entity<MenuSale>()
-        //        .HasOne(pt => pt.Menu)
-        //        .WithMany(p => p.MenuSale)
-        //        .HasForeignKey(pt => pt.MenuId);
+            modelBuilder.Entity<Menu>()
+            .HasMany<Sale>(s => s.Sales)
+            .WithMany(c => c.Menus)
+            .Map(cs =>
+            {
+                cs.MapLeftKey("IdMenu");
+                cs.MapRightKey("Id");
+                cs.ToTable("MenuSale");
+            });
 
-        //    modelBuilder.Entity<MenuSale>()
-        //        .HasOne(pt => pt.Sale)
-        //        .WithMany(t => t.MenuSale)
-        //        .HasForeignKey(pt => pt.SaleId);
+        }
 
-        //}
+        public System.Data.Entity.DbSet<RestaurantNew.Models.Sale> Sales { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantNew.Models.MenuSale> MenuSales { get; set; }
     }
 }

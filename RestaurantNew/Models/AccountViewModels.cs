@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestaurantNew.Models
 {
@@ -65,14 +66,26 @@ namespace RestaurantNew.Models
     public class RegisterViewModel
     {
 
+        private string email;
+
         [Required]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
+        public int MyProperty { get; set; }
         [Required]
+        
+        [Index("EmailIndex", IsUnique = true)]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string Email {
+            get { return email; }
+            set {
+               
+                email = value;
+            }
+        
+        }
 
         [Required]
         [Phone]
@@ -89,6 +102,8 @@ namespace RestaurantNew.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel

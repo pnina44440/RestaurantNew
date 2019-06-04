@@ -201,8 +201,10 @@
     <Compile Include="Controllers\CustUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuSalesController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,21 +212,9 @@
     <Compile Include="Migrations\201704222031430_new.Designer.cs">
       <DependentUpon>201704222031430_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704231508148_New2304.cs" />
-    <Compile Include="Migrations\201704231508148_New2304.Designer.cs">
-      <DependentUpon>201704231508148_New2304.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704231625325_New_2304.cs" />
-    <Compile Include="Migrations\201704231625325_New_2304.Designer.cs">
-      <DependentUpon>201704231625325_New_2304.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271512431_rn.cs" />
-    <Compile Include="Migrations\201905271512431_rn.Designer.cs">
-      <DependentUpon>201905271512431_rn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905281548567_hemi.cs" />
-    <Compile Include="Migrations\201905281548567_hemi.Designer.cs">
-      <DependentUpon>201905281548567_hemi.cs</DependentUpon>
+    <Compile Include="Migrations\201906041222436_hadas.cs" />
+    <Compile Include="Migrations\201906041222436_hadas.Designer.cs">
+      <DependentUpon>201906041222436_hadas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -338,6 +328,16 @@
     <Content Include="Views\CustUsers\Details.cshtml" />
     <Content Include="Views\CustUsers\Edit.cshtml" />
     <Content Include="Views\CustUsers\Index.cshtml" />
+    <Content Include="Views\Sales\Create.cshtml" />
+    <Content Include="Views\Sales\Delete.cshtml" />
+    <Content Include="Views\Sales\Details.cshtml" />
+    <Content Include="Views\Sales\Edit.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\MenuSales\Create.cshtml" />
+    <Content Include="Views\MenuSales\Delete.cshtml" />
+    <Content Include="Views\MenuSales\Details.cshtml" />
+    <Content Include="Views\MenuSales\Edit.cshtml" />
+    <Content Include="Views\MenuSales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\Desserts\" />
@@ -359,17 +359,8 @@
     <EmbeddedResource Include="Migrations\201704222031430_new.resx">
       <DependentUpon>201704222031430_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231508148_New2304.resx">
-      <DependentUpon>201704231508148_New2304.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704231625325_New_2304.resx">
-      <DependentUpon>201704231625325_New_2304.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271512431_rn.resx">
-      <DependentUpon>201905271512431_rn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905281548567_hemi.resx">
-      <DependentUpon>201905281548567_hemi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906041222436_hadas.resx">
+      <DependentUpon>201906041222436_hadas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

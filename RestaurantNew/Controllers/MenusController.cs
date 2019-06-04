@@ -26,7 +26,7 @@ namespace RestaurantNew.Controllers
         }
         public ActionResult Disserts()
         {
-            var dissert = from m in db.Menus
+            var dissert = from m in db.Menus//.Include(s => s.Sales)
                           select m;
 
             dissert = dissert.Where(d => d.Categorya == 1);

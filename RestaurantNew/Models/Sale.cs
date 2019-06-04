@@ -13,6 +13,7 @@ namespace RestaurantNew.Models
 
         public int Discount { get; set; }
 
-        public ICollection<MenuSale> MenuSales { get; set; }
+       // public ICollection<MenuSale> MenuSales { get; set; }
+        public virtual ICollection<Menu> Menus { get; set; }
     }
 }
