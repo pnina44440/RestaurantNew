@@ -212,10 +212,6 @@
     <Compile Include="Migrations\201704222031430_new.Designer.cs">
       <DependentUpon>201704222031430_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906041222436_hadas.cs" />
-    <Compile Include="Migrations\201906041222436_hadas.Designer.cs">
-      <DependentUpon>201906041222436_hadas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
@@ -257,6 +253,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -358,9 +355,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704222031430_new.resx">
       <DependentUpon>201704222031430_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906041222436_hadas.resx">
-      <DependentUpon>201906041222436_hadas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
