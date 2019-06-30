@@ -3,40 +3,81 @@
     ViewBag.Title = "Register";
 }
 <body>
+    @*<script src="JavaScript.js">
+     
+    </script>*@
     <script>
-        function check() {
-            if (Session["User"] != null) {
-                if (document.getElementById("defaultUnchecked").checked == true) {
+     
+        function myFunction() {
+            alert("try!!!!!");
+            alert("222!!!!!");
+            alert( @((RestaurantNew.Models.ApplicationUser)Session["User"]).Email);
+             @((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "123";
 
-                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
-                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-                }
-                else if (document.getElementById("defaultUnchecked").checked == true) {
+            Session[name] = val;
+            var name = Request.Form("name")();
+            Session("Name") = name;
+            //if ((RestaurantNew.Models.ApplicationUser)Session["User"].PhoneNumber == "1") {
+            //    alert("try2!!!!!");
+            //}
 
-                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
-                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-                }
-                else if (document.getElementById("defaultUnchecked").checked == true) {
+            
 
-                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
-                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-                }
-                else if (document.getElementById("defaultUnchecked").checked == true) {
+            //if (Session["User"] != null) {
+            //    if (document.getElementById("defaultUnchecked").checked == true) {
 
-                    ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
-                    alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-                }
+            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
+            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+            //    }
+            //    else if (document.getElementById("defaultUnchecked").checked == true) {
 
-            }
+            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
+            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+            //    }
+            //    else if (document.getElementById("defaultUnchecked").checked == true) {
+
+            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
+            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+            //    }
+            //    else if (document.getElementById("defaultUnchecked").checked == true) {
+
+            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
+            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+            //    }
+            //}
+        }
+        //function check()
+        //{
+        //    if (Session["User"] != null) {
+        //        if (document.getElementById("defaultUnchecked").checked == true) {
+
+        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
+        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+        //        }
+        //        else if (document.getElementById("defaultUnchecked").checked == true) {
+
+        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
+        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+        //        }
+        //        else if (document.getElementById("defaultUnchecked").checked == true) {
+
+        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
+        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+        //        }
+        //        else if (document.getElementById("defaultUnchecked").checked == true) {
+
+        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
+        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
+        //        }
+
+        //    }
+        //}
     </script>
     <h2>@ViewBag.Title.</h2>
     <div class="row">
         <div class="col-md-5">
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-
-
-
 
                 @Html.AntiForgeryToken()
                 <h4>Create a new account.</h4>
@@ -53,12 +94,14 @@
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
                     </div>
+                 
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>
+                    </div>  
+                    
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
@@ -97,6 +140,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" class="btn btn-default" value="Register" onclick="check()" />
+                        <button onclick="myFunction()">Click me</button>
 
                     </div>
                 </div>

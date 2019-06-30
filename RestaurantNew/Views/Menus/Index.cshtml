@@ -40,6 +40,7 @@
         
     }
 </script>
+<b>@Session("Name") </b>  
 <div class="container ">
     <br/>
     <div class="row text-center">
@@ -72,10 +73,12 @@
                         }
                         @if (Session["User"] != null)
                         {
-                            <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
-                        }
-                        <br />
-                    </p>
+                            @*<b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>*@
+
+                        
+                            }
+                            <br />
+                        </p>
                     @using Microsoft.AspNet.Identity
                     @if (Request.IsAuthenticated)
                     {
