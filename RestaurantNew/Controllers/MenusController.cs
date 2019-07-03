@@ -12,6 +12,10 @@ namespace RestaurantNew.Controllers
 {
     public class MenusController : Controller
     {
+
+        public int DiscountAfter =5; 
+        public string StatusSale = "None";
+        public int IdSaleTime = 0; // 1= morning ' 2 = afternoon .  3=evening
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Menus
@@ -19,15 +23,34 @@ namespace RestaurantNew.Controllers
         {
             return View(db.Menus.ToList());
         }
-
+        
         public ActionResult List()
         {
             return View();
         }
-        public ActionResult Disserts()
+        public int CheckDiscountAfter()
         {
-            var dissert = from m in db.Menus//.Include(s => s.Sales)
-                          select m;
+            var disc = from sale1 in db.Sales
+                       select sale1;
+           // DiscountAfter = disc.Where(d => d.Discount == Session["User"]);
+           
+            return DiscountAfter;
+        }
+        public ActionResult Disserts()   // מחזירה את הקינוחים לאחר שעידכנה אחוז הנחה מתאים ליוזר 
+        {
+            
+            
+            var dissert = from sale1 in db.Sales
+                           join  menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+                           join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+                          select new
+                          {
+                              menu1.NameDose ,
+                              menu1.Description ,
+                              menu1.Price,  //  sale1.Discount * menu1.Price  ,
+                              menu1.ImageUri ,
+                              menu1.Categorya
+                          };
 
             dissert = dissert.Where(d => d.Categorya == 1);
 
@@ -61,19 +84,30 @@ namespace RestaurantNew.Controllers
 
             return View("Index", start);
         }
+        [HttpPost]
+        public ActionResult Search( string NameDuse = "uu" ,int FromPrice = 0 ,int UntilPrice = 0)
+        {
+            //List<string> Cars ;
+            //var menu = from m in db.Menus
+            //           where m.Price < UntilPrice && m.Price > FromPrice
+            //           group m.Price by m.IdMenu into g
+
+            //           select new { IdMenu = g.Key, cars = g.ToList() };
+            //---------------------
+            var menu = from m in db.Menus
+                       where (m.Price < UntilPrice) && (m.Price > FromPrice)
+                       select m;
+
+
+            if (!String.IsNullOrEmpty(NameDuse))
+            {
+                menu = menu.Where(s => s.NameDose.Contains(NameDuse));
+            }
+
        
-        //public ActionResult Index(string searchString)
-        //{
-        //    var menu = from m in db.Menus
-        //               select m;
 
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        menu = menu.Where(s => s.NameDose.Contains(searchString));
-        //    }
-
-        //    return View(menu);
-        //}
+            return View("Index",menu);
+        }
 
 
         // GET: Menus/Details/5
@@ -179,32 +213,21 @@ namespace RestaurantNew.Controllers
             }
             base.Dispose(disposing);
         }
-        //public ActionResult InsertToOrder(int id)
-        //{
-        //    Menu menu = db.Menus.Find(id);
-        //    Order neworder = new Order();
-        //   //neworder.Count=menu.
-        //    neworder.IdMenu = menu.IdMenu;
-        //    neworder.DateForDay=DateTime.Now;
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        /* public ActionResult Insert([Bind(Include = "IdOrder,IdClub,Menu,DateForDay,Count")] Order neworder)
+        public int CheckSuitibleSale()
         {
-            if (ModelState.IsValid)
-            {
-                Menu menu = db.Menus.Find();
-               // Order neworder = new Order();
-                //neworder.Count=menu.
-                neworder.Menu = menu.IdMenu;
-                neworder.DateForDay = DateTime.Now;
-                db.Orders.Add(neworder);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(neworder);
-        }*/
+            System.DateTime moment = new System.DateTime();
+            // Year gets 1999.
+           
+            int hour = moment.Hour;
+            if (hour > 8 && hour < 12)
+                IdSaleTime = 1;
+            else if(hour > 16 && hour < 20)
+                IdSaleTime = 2;
+            else
+                IdSaleTime = 3;
+            return IdSaleTime;
+        }
+     
     }
 }

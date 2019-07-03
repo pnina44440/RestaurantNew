@@ -335,6 +335,7 @@
     <Content Include="Views\MenuSales\Details.cshtml" />
     <Content Include="Views\MenuSales\Edit.cshtml" />
     <Content Include="Views\MenuSales\Index.cshtml" />
+    <Content Include="Views\Menus\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\Desserts\" />

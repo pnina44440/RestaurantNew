@@ -22,4 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+h1 {
+    text-shadow: 2px 2px #ff0000;
+}
+div {
+    column-gap: 40px;
+}
+/*@font-face {
+    font-family: myFont;
+    src: url(sansation_light.woff);
+}*/
+#Borderradius {
+    border: 2px solid red;
+    border-radius: 25px;
+}
 

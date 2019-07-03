@@ -34,13 +34,35 @@
         }
 
 </style>
-<body >
-<script>
-    function name(parameters) {
-        
-    }
-</script>
-<b>@Session("Name") </b>  
+<body>
+    <script>
+        function name(parameters) {
+
+        }
+    </script>
+
+    
+    <div class="col-md-12">
+        @using (Html.BeginForm("Search", "Menus", FormMethod.Post))
+        {
+
+            <h4>Enter name of menu:</h4>
+            <br />
+            <input type="text" name="NameDuse">
+            <br />
+            <h4>Enter from price:</h4>
+            <br />
+            <input type="text" name="FromPrice">
+            <br /> <h4>Enter until price:</h4>
+            <br />
+            <input type="text" name="UntilPrice">
+            <br />
+
+            <button type="submit" value="Search" size="30">Search</button>
+        }
+    </div>
+         
+          
 <div class="container ">
     <br/>
     <div class="row text-center">
@@ -73,9 +95,9 @@
                         }
                         @if (Session["User"] != null)
                         {
-                            @*<b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>*@
+                            <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
 
-                        
+
                             }
                             <br />
                         </p>
@@ -86,9 +108,9 @@
 
                     }
 
-                   
 
-                    
+
+
                 </div>
 
             </div>
@@ -133,4 +155,4 @@
         </div>
     </div>
 </div>
-</body>
+    </body>

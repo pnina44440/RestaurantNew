@@ -2,14 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@if (Session["User"] != null)
-{
-    @(RestaurantNew.Models.ApplicationUser)Session["x"] = "123" ;
-<b>@(Session["x"])</b>
-    <b> @((RestaurantNew.Models.ApplicationUser)Session["User"]).Email </b>
-    <b> @((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber </b>
 
-}
 
 <div class="jumbotron">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
