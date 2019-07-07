@@ -518,4 +518,4 @@ C:\Users\hcc\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CoreCompi
 C:\Users\hcc\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CopyComplete
 C:\Users\hcc\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.dll
 C:\Users\hcc\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.pdb
-C:\Users\hcc\Desktop\REST\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache
+C:\Users\hcc\Desktop\rest\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache

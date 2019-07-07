@@ -4,8 +4,8 @@
 }
 <style>
     #Borderradius {
-        border: 2px solid red;
-        border-radius: 25px;
+        border: 2px solid brown;
+        border-radius: 5px;
     }
 </style>
 <body>
@@ -100,14 +100,14 @@
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
                     </div>
-                 
+
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>  
-                    
+                    </div>
+
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
@@ -122,42 +122,52 @@
                     </div>
                 </div>
                 <h3> declare your position</h3>
-                <div id="Borderradius">
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                        <label class="custom-control-label" for="defaultUnchecked">none</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="defaultExampleRadios">
-                        <label class="custom-control-label" for="defaultUnchecked">solder</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultUnchecked2" name="defaultExampleRadios" on>
-                        <label class="custom-control-label" for="defaultUnchecked">student</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultUnchecked3" name="defaultExampleRadios">
-                        <label class="custom-control-label" for="defaultUnchecked">manager</label>
-                    </div>
-                </div>
-                @*@if (Session["User"] != null)
+                <div class="col-md-12">
+                    @using (Html.BeginForm("CheckDiscountAfter", "Menus", FormMethod.Post))
                     {
-                        @((RestaurantNew.Models.ApplicationUser)Session["User"]).Phone=
-                    }*@
+                        <div id="Borderradius">
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Register" onclick="check()" />
-                        <button onclick="myFunction()">Click me</button>
-                        
-                    </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="none" name="defaultExampleRadios" checked="False">
+                                <label class="custom-control-label" for="defaultUnchecked">none</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="solder" name="defaultExampleRadios">
+                                <label class="custom-control-label" for="defaultUnchecked">solder</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="student" name="defaultExampleRadios">
+                                <label class="custom-control-label" for="defaultUnchecked">student</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="manager" name="defaultExampleRadios">
+                                <label class="custom-control-label" for="defaultUnchecked">manager</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Register" />
+                                <button onclick="myFunction()">Click me</button>
+
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
-        </div>
-        <div class="col-md-7">
-            <img src="~/Image/Club.jpeg" width="600" />
-        </div>
-    </div>
+
+
+                    @*@if (Session["User"] != null)
+                {
+                    @((RestaurantNew.Models.ApplicationUser)Session["User"]).Phone=
+                }*@
+
+               
+                    }
+                </div>
+                <div class="col-md-7">
+                    <img src="~/Image/Club.jpeg" width="600" />
+                </div>
+            </div>
 </body>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")

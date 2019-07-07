@@ -10,9 +10,21 @@ using RestaurantNew.Models;
 
 namespace RestaurantNew.Controllers
 {
-    public class MenusController : Controller
+    public class MenuWithSale
     {
+    //    public Dog { get; set; }
+    //public string BreedName { get; set; }
 
+     public string NameDose { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
+        public string ImageUri { get; set; }
+        public int Categorya { get; set; }
+      
+   }
+public class MenusController : Controller
+    {
+        public IQueryable<MenuWithSale>  resusultSale;
         public int DiscountAfter =5; 
         public string StatusSale = "None";
         public int IdSaleTime = 0; // 1= morning ' 2 = afternoon .  3=evening
@@ -28,61 +40,121 @@ namespace RestaurantNew.Controllers
         {
             return View();
         }
-        public int CheckDiscountAfter()
+        //public IQueryable<DogWithBreed> GetDogsWithBreedNames()
+        //{
+        //    var db = new DogDataContext(ConnectString);
+        //    var result = from d in db.Dogs
+        //                 join b in db.Breeds on d.BreedId equals b.BreedId
+        //                 select new DogWithBreed()
+        //                 {
+        //                     Dog = d,
+        //                     BreedName = b.BreedName
+        //                 };
+        //    return result;
+        //}
+
+
+        [HttpPost]
+        public  IQueryable<MenuWithSale> CheckDiscountAfter(string WhoCheck)
         {
+
+            //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
             var disc = from sale1 in db.Sales
+                       where WhoCheck == sale1.Name
                        select sale1;
-           // DiscountAfter = disc.Where(d => d.Discount == Session["User"]);
-           
-            return DiscountAfter;
+
+            //מחזיר את ההנחה מתוצאת השאילתא
+            foreach (var x in disc)
+            {
+                DiscountAfter = x.Discount;
+            }
+
+
+
+            //---------מחזיר לclass שיצרנו -------------
+             resusultSale = from sale1 in db.Sales
+                          join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+                          join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+                          select new MenuWithSale()
+                          {
+                              NameDose = menu1.NameDose ,
+                              Description = menu1.Description,
+                              Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
+                              ImageUri = menu1.ImageUri,
+                              Categorya = menu1.Categorya
+                          };
+
+            //---------------------------
+            Drinks();
+            Disserts();
+            // DiscountAfter = disc.Where(d => d.Discount == Session["User"]);
+
+            return resusultSale;
         }
         public ActionResult Disserts()   // מחזירה את הקינוחים לאחר שעידכנה אחוז הנחה מתאים ליוזר 
         {
-            
-            
-            var dissert = from sale1 in db.Sales
-                           join  menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-                           join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-                          select new
-                          {
-                              menu1.NameDose ,
-                              menu1.Description ,
-                              menu1.Price,  //  sale1.Discount * menu1.Price  ,
-                              menu1.ImageUri ,
-                              menu1.Categorya
-                          };
 
-            dissert = dissert.Where(d => d.Categorya == 1);
+            //var dissert = from sale1 in db.Sales
+            //                   join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+            //                   join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+            //                   select new
+            //                   {
+            //                       a = menu1.NameDose,
+            //                       b = menu1.Description,
+            //                       c = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
+            //                       d = menu1.ImageUri,
+            //                       e = menu1.Categorya
+            //                   };
 
-            return View("Index", dissert);
+
+            resusultSale = resusultSale.Where(d => d.Categorya == 1);
+
+            return View("Index", resusultSale);
         }
+
+     
+
+     
+
         public ActionResult Drinks()
         {
-            var drink = from m in db.Menus
-                        select m;
+            //var drink = from m in db.Menus
+            //            select m;
 
-            drink = drink.Where(d => d.Categorya == 2);
+            //var drink = from sale1 in db.Sales
+            //              join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+            //              join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+            //              select new
+            //              {
+            //                  a = menu1.NameDose,
+            //                  b = menu1.Description,
+            //                  c = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
+            //                  d = menu1.ImageUri,
+            //                  e = menu1.Categorya
+            //              };
 
-            return View("Index", drink);
+            resusultSale = resusultSale.Where(d => d.Categorya == 2);
+
+            return View("Index", resusultSale);
         }
         public ActionResult Maindishes()
         {
-            var maindish = from m in db.Menus
-                           select m;
+            //var maindish = from m in db.Menus
+            //               select m;
 
-            maindish = maindish.Where(m => m.Categorya == 3);
+            resusultSale = resusultSale.Where(m => m.Categorya == 3);
 
-            return View("Index", maindish);
+            return View("Index", resusultSale);
         }
 
         public ActionResult Starters()
         {
-            var start = from m in db.Menus
-                        select m;
+            //var start = from m in db.Menus
+            //            select m;
 
-            start = start.Where(s => s.Categorya == 4);
+            resusultSale = resusultSale.Where(s => s.Categorya == 4);
 
-            return View("Index", start);
+            return View("Index", resusultSale);
         }
         [HttpPost]
         public ActionResult Search( string NameDuse = "uu" ,int FromPrice = 0 ,int UntilPrice = 0)
