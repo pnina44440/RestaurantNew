@@ -17,142 +17,145 @@
         margin-bottom: 20px;
     }
 
-    .product > img {
-        border-radius: 15px;
-        box-shadow: 0 0 17px 3px #78767d;
-        transition: all 280ms linear;
-    }
+        .product > img {
+            border-radius: 15px;
+            box-shadow: 0 0 17px 3px #78767d;
+            transition: all 280ms linear;
+        }
 
-        .product:hover > img{
+        .product:hover > img {
             box-shadow: 0 0 12px 10px #78767d;
         }
 
         .product:hover > p > span {
             transition: all 280ms linear;
-            
             font-weight: bold;
         }
 
+    .Search input {
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 10px solid #F5C25F;
+        width: 175px;
+        background: #F7DEAE;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+    }
 </style>
 <body>
-    <script>
-        function name(parameters) {
 
-        }
-    </script>
+    <div class="col-md-12">@Html.ActionLink("Create a new menu", "Create", "Menus")</div>
+    <aside>
+        <div>
+            @using (Html.BeginForm("Search", "Menus", FormMethod.Post))
+            {
+                <div class="Search">
+                    <div class="col-md-3">
+                        <h4>Enter name of menu:</h4>
 
-    
-    <div class="col-md-12">
-        @using (Html.BeginForm("Search", "Menus", FormMethod.Post))
-        {
+                        <input type="text" name="NameDuse">
 
-            <h4>Enter name of menu:</h4>
-            <br />
-            <input type="text" name="NameDuse">
-            <br />
-            <h4>Enter from price:</h4>
-            <br />
-            <input type="text" name="FromPrice">
-            <br /> <h4>Enter until price:</h4>
-            <br />
-            <input type="text" name="UntilPrice">
-            <br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Enter from price:</h4>
 
-            <button type="submit" value="Search" size="30">Search</button>
-        }
-    </div>
-         
-          
-<div class="container ">
-    <br/>
-    <div class="row text-center">
-        @foreach (var item in Model)
-        {
+                        <input type="text" name="FromPrice">
 
-            <div class="col-md-4 ">
-                <div class="product">
-                    <img src="@item.ImageUri" style="width: 300px; height: 200px"/>
-                    <p id="item">
-                        <br />
-                        <strong> @item.NameDose</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Enter until price:</h4>
 
-                        <br />
-                        @item.Description
-                        <br />
-                        <div hidden>@item.Description</div>
-                        <span> @item.Price₪</span>
-                        @{
-                            /*if (item.Sales != null && item.Sales.Count > 0)
+                        <input type="text" name="UntilPrice">
+
+                    </div>
+                    <div class="col-md-2">
+                        <br /><br />
+                        <button type="submit" value="Search" size="30" style="background-color:darkorange">Search</button>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </aside>
+
+    <div class="container ">
+        <br />
+        <div class="row text-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 ">
+                    <div class="product">
+                        <img src="@item.ImageUri" style="width: 300px; height: 200px" />
+                        <p id="item">
+                            <br />
+                            <strong> @item.NameDose</strong>
+
+                            <br />
+                            @item.Description
+                            <br />
+                            <div hidden>@item.Description</div>
+                            <span> @item.Price₪</span>
+
+                            @if (Session["User"] != null)
                             {
-                            var i = item.Price;
-                            foreach (var sale in item.Sales)
-                            {
-                            //sale.Discount
-                            }
-
-                            <span> @i ₪</span>
-                            }*/
-                        }
-                        @if (Session["User"] != null)
-                        {
-                            <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
-
-
+                                <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
                             }
                             <br />
                         </p>
-                    @using Microsoft.AspNet.Identity
-                    @if (Request.IsAuthenticated)
-                    {
-                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
 
-                    }
+                        @using Microsoft.AspNet.Identity
+                        @if (Request.IsAuthenticated)
+                        {
+                            <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
+                        }
 
-
-
-
-                </div>
-
-            </div>
-        }
-    </div>
-    <br/>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4><span class="glyphicon glyphicon-shopping-cart"></span> Tickets</h4>
-            </div>
-            <div class="modal-body">
-                <!--iframe src="/Orders/Create" frameborder="0" width="100%" height="400px"></iframe-->
-                <form role="form" action="/Orders/Create" method="post">
-                    <div class="form-group">
-                        <label for="psw"> How many?</label>
-                        <input type="number" class="form-control" id="count" placeholder="" name="Count" />
+                        @*---------------------------------*@
+                        <div>
+                            @Html.ActionLink("Delete", "Delete", "Menus")
+                        </div>
                     </div>
+                </div>
+            }
+        </div>
+        <br />
+    </div>
 
-                    <input type="hidden" id="namedose" name="IdMenu" value="6" />
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-                    <button class="btn btn-block">
-                        Pay
-                        <span class="glyphicon glyphicon-ok"></span>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-shopping-cart"></span> Tickets</h4>
+                </div>
+                <div class="modal-body">
+                    <!--iframe src="/Orders/Create" frameborder="0" width="100%" height="400px"></iframe-->
+                    <form role="form" action="/Orders/Create" method="post">
+                        <div class="form-group">
+                            <label for="psw"> How many?</label>
+                            <input type="number" class="form-control" id="count" placeholder="" name="Count" />
+                        </div>
+
+                        <input type="hidden" id="namedose" name="IdMenu" value="6" />
+
+                        <button class="btn btn-block">
+                            Pay
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
                     </button>
-
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span> Cancel
-                </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    </body>
+</body>

@@ -123,27 +123,51 @@
                 </div>
                 <h3> declare your position</h3>
                 <div class="col-md-12">
-                    @using (Html.BeginForm("CheckDiscountAfter", "Menus", FormMethod.Post))
-                    {
-                        <div id="Borderradius">
 
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="none" name="defaultExampleRadios" checked="False">
-                                <label class="custom-control-label" for="defaultUnchecked">none</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="solder" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">solder</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="student" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">student</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="manager" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">manager</label>
-                            </div>
-                        </div>
+
+                    @*@using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                    {
+                        <b>Search by :
+                        </b>@Html.RadioButton("Searchby", "EmpName", true)
+                        <text>Name</text>
+                        @Html.RadioButton("Searchby", "IsPermanant")
+                        <text>Id</text><br />
+                        @Html.TextBox("Search");
+                        <input type="submit" value="Search" 
+                        />
+                    }*@
+
+                    @using (Html.BeginForm("CheckDiscountAfter1", "Menus", FormMethod.Post))
+                    {
+                    <div id="Borderradius">
+
+                        @*<div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="none" name="defaultExampleRadios" checked="False">
+            <label class="custom-control-label" for="defaultUnchecked">none</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="solder" name="defaultExampleRadios">
+            <label class="custom-control-label" for="defaultUnchecked">solder</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="student" name="defaultExampleRadios">
+            <label class="custom-control-label" for="defaultUnchecked">student</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="manager" name="defaultExampleRadios">
+            <label class="custom-control-label" for="defaultUnchecked">manager</label>
+        </div>*@
+                        @Html.RadioButton("StatusRadios", "none", true)
+                        <text>none</text>
+                        @Html.RadioButton("StatusRadios", "solder")
+                        <text>solder</text>
+                        @Html.RadioButton("StatusRadios", "student")
+                        <text>student</text>
+                        @Html.RadioButton("StatusRadios", "manager")
+                        <text>manager</text>
+
+
+                    </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">

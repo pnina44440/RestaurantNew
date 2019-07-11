@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,10 +12,10 @@ using RestaurantNew.Models;
 namespace RestaurantNew.Controllers
 {
     public class MenuWithSale
-    {
-    //    public Dog { get; set; }
-    //public string BreedName { get; set; }
-
+    { 
+        //    public Dog { get; set; }
+        //public string BreedName { get; set; }
+      
      public string NameDose { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
@@ -24,6 +25,8 @@ namespace RestaurantNew.Controllers
    }
 public class MenusController : Controller
     {
+        public string StatusRadios;
+        public string WhoCheck;
         public IQueryable<MenuWithSale>  resusultSale;
         public int DiscountAfter =5; 
         public string StatusSale = "None";
@@ -53,11 +56,23 @@ public class MenusController : Controller
         //    return result;
         //}
 
+        [HttpPost]
+        public ActionResult CheckDiscountAfter1(string WhoCheck, string StatusRadios)
+        {
+            Debug.WriteLine(WhoCheck);
+            this.WhoCheck = WhoCheck;
+            this.StatusRadios = StatusRadios;
+            Debug.WriteLine(WhoCheck);
+            return View();
+        }
 
         [HttpPost]
-        public  IQueryable<MenuWithSale> CheckDiscountAfter(string WhoCheck)
+        public  IQueryable<MenuWithSale> CheckDiscountAfter(string WhoCheck , string StatusRadios)
         {
-
+            Debug.WriteLine(WhoCheck);
+            this.WhoCheck = WhoCheck;
+            this.StatusRadios = StatusRadios;
+            Debug.WriteLine(WhoCheck);
             //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
             var disc = from sale1 in db.Sales
                        where WhoCheck == sale1.Name
@@ -88,7 +103,7 @@ public class MenusController : Controller
             Drinks();
             Disserts();
             // DiscountAfter = disc.Where(d => d.Discount == Session["User"]);
-
+            
             return resusultSale;
         }
         public ActionResult Disserts()   // מחזירה את הקינוחים לאחר שעידכנה אחוז הנחה מתאים ליוזר 
@@ -141,7 +156,7 @@ public class MenusController : Controller
         {
             //var maindish = from m in db.Menus
             //               select m;
-
+            CheckDiscountAfter1(WhoCheck , StatusRadios);
             resusultSale = resusultSale.Where(m => m.Categorya == 3);
 
             return View("Index", resusultSale);

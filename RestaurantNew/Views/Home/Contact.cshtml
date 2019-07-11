@@ -9,15 +9,70 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <style>
+        /*** FORM 1 ***/
+        .cform01 * {
+            font-family: arial;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
 
+        .cform01 {
+            border: 15px solid #F5C25F;
+            width: 235px;
+            background: #F7DEAE;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+        }
+
+            .cform01 .fix {
+                clear: both;
+            }
+
+            .cform01 .brad5, .cform01 input, .cform01 textarea {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+
+            .cform01 .inner {
+                border: 5px solid #FADC76;
+                padding: 20px;
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+                border-radius: 6px;
+            }
+
+            .cform01 h3 {
+                margin: 0 0 10px;
+            }
+
+            .cform01 input, .cform01 textarea {
+                width: 100%;
+                padding: 8px 5px;
+                border: 2px solid #F5C25F;
+            }
+
+            .cform01 .link1 {
+                float: left;
+                margin: 2%;
+                background: #CF3B19;
+                padding: 5px 10px;
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+    </style>
 </head>
-<body style="background-color: darkgray;">
+<body style="background-color:wheat ">
     <div class="container ">
         <div class="row">
-            <div class="col-md-6 ">
-                <div id="map" style="width: 100%; height: 400px;" />
-            </div>
-            <div class="col-md-6 ">
+
+
+            <div class="col-md-3 ">
                 <h3> Our Branches</h3>
                 <ul style="list-style-type: disc">
                     <li>
@@ -38,8 +93,8 @@
                     <li>
                         <h4>Karmiel</h4>
                         <h5>Yossef St.</h5>
+                        <br />
                     </li>
-                    <br />
                     <li>
                         <h4>Haifa</h4>
                         <h5>Hrzel St.</h5>
@@ -47,7 +102,38 @@
 
                 </ul>
             </div>
+            <div class="col-md-8 ">
+                <div id="map" style="width: 150%; height: 500px;" />
+            </div>
+            <br /><br />
+            <div class="col-md-4 ">
+                <div class="cform cform01">
+                    <div class="inner">
+                        <h3>Contact</h3>
+
+                        <div class="">
+                            <form id="form">
+                                <input type="text" id="name" name="name" placeholder="Your name" />
+                                <input type="text" id="email" name="email" placeholder="Your email" />
+                                <input type="text" id="topic" name="topic" placeholder="Your phon" />
+                                <textarea id="comments" name="comments" cols="1" rows="3" placeholder="גוף ההודעה"></textarea>
+                                <br />
+
+                                <input type="submit" value="Send" style="background-color:darkorange" />
+                                @* <div class="buttons">
+                                    <a href="#" class="link1 brad5" onclick="document.getElementById('form').submit()"><em><b>שליחה</b></em></a>
+                                                            <div class="fix"></div>*@
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col-md-4">
+
+        </div>
+
     </div>
 
 
@@ -97,96 +183,10 @@
 
 
 
-@**/
-        function setUpCustomZooming(map) {
-            // create several circles to denote cities' population
-            var clevelandCircle = new H.map.Circle(
-                new H.geo.Point(31.7910986, 34.6394934), //center
-                11703, // Radius proportional to 390,113 population
-                { style: { fillColor: 'rgba(0, 255, 221, 0.66)' } }
-            );
-            var torontoCircle = new H.map.Circle(
-                new H.geo.Point(31.7910986, 34.6394934), //center
-                75090, // Radius proportional to 2.503 million population
-                { style: { fillColor: 'rgba(0, 255, 221, 0.66)' } }
-            );
-            var chicagoCircle = new H.map.Circle(
-                new H.geo.Point(31.7910986, 34.6394934), //center
-                81570, // Radius proportional to 2.719 million population
-                { style: { fillColor: 'rgba(0, 221, 255, 0.66)' } }
-            );
-            var newYorkCircle = new H.map.Circle(
-                new H.geo.Point(31.7910986, 34.6394934), //center
-                252180, // Radius proportional to 8.406 million population
-                { style: { fillColor: 'rgba(221, 0, 255, 0.66)' } }
-            );
-            // define maximum zoom level for each circle
-            clevelandCircle.setData({ maxZoom: 7 });
-            torontoCircle.setData({ maxZoom: 5 });
-            chicagoCircle.setData({ maxZoom: 5 });
-            newYorkCircle.setData({ maxZoom: 4 });
 
-            // create container for objects
-            var container = new H.map.Group({
-                objects: [clevelandCircle, torontoCircle, chicagoCircle, newYorkCircle]
-            });
-
-            // use the event delegation to handle 'tap' events on objects
-            container.addEventListener('tap',
-                function (evt) {
-                    var target = evt.target;
-                    // retrieve maximum zoom level
-                    var maxZoom = target.getData().maxZoom;
-                    // calculate best camera data to fit object's bounds
-                    var cameraData = map.getCameraDataForBounds(target.getBounds());
-
-                    // we set new zoom level taking into acount 'maxZoom' value
-                    map.setZoom(Math.min(cameraData.zoom, maxZoom), true);
-                    map.setCenter(cameraData.position, true);
-                });
-
-            // add objects to the map
-            map.addObject(container);
-        }
-
-
-        /**
-         * Boilerplate map initialization code starts below:
-         */
-
-        // Step 1: initialize communication with the platform
-        var platform = new H.service.Platform({
-            app_id: 'devportal-demo-20180625',
-            app_code: '9v2BkviRwi9Ot26kp2IysQ',
-            useHTTPS: true
-        });
-        var pixelRatio = window.devicePixelRatio || 1;
-        var defaultLayers = platform.createDefaultLayers({
-            tileSize: pixelRatio === 1 ? 256 : 512,
-            ppi: pixelRatio === 1 ? undefined : 320
-        });
-
-        // Step 2: initialize a map
-        var map = new H.Map(document.getElementById('map'),
-            defaultLayers.normal.map,
-            {
-                // initial center and zoom level of the map
-                center: new H.geo.Point(41.4822, -81.6697),
-                zoom: 6,
-                pixelRatio: pixelRatio
-            });
-
-        // Step 3: make the map interactive
-        // MapEvents enables the event system
-        // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
-        // Step 4: main logic goes here
-        setUpCustomZooming(map);
-    </script>*@
 <!--
     To use this code on your website, get a free API key from Google.
-    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    Read more at: https://www.whools.co3scm/graphics/google_maps_basic.asp
 
 AIzaSyCOQecjiq8CEP664cBNSyqq3d8wM-F5Dbc
     -->
