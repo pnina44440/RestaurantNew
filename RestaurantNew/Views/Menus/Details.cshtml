@@ -1,67 +1,65 @@
-﻿@model RestaurantNew.Models.Menu
+﻿ @model RestaurantNew.Models.Menu
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
 }
+<head>
+   
+    <link rel="stylesheet" type="text/css" href="Site.css" />
+</head>
+<h2>Details</h2>
 
-<body>
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorya)
+        </dt>
 
-<div class="container ">
-    <div class="row">
-        @{
-            /*
-        <!--div class="col-md-4 ">
-        <img src="@item.ImageUri" style="width: 300px; height: 200px"/>
-        <p id="item">
-            <br/>
-            <strong> @item.NameDose</strong>
-            <br/>
-            @item.Description
-            <br/>
-            @item.Price
-            <br/>
-        </p>
-        <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
-        <br />
-        </div-->
-        */
-        }
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Categorya)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameDose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameDose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUri)
+        </dd>
+
+    </dl>
+
 </div>
+<p>
+@Html.ActionLink("Edit", "Edit", new { id = Model.IdMenu }) |
+@Html.ActionLink("Back to List", "Index")
+</p>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4><span class="glyphicon glyphicon-shopping-cart"></span> Tickets</h4>
-            </div>
-            <div class="modal-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="psw"> How many?</label>
-                        <input type="number" class="form-control" id="count" placeholder="">
-                    </div>
-                    @using (Html.BeginForm("Create", "Orders", FormMethod.Post))
-                    {
-                        <button class="btn btn-block">
-                            Pay
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </button>
-                    }
-                </form>
-
-                
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span> Cancel
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
+  

@@ -4,18 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title - Terasa Resturant</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        #Names {
+        /*#Names {
             border: solid rgb(102,51,0);
             border-radius: 10px;
         }
-
         h4 {
             color: rgb(102,51,0);
-        }
+        }*/
+
     </style>
 </head>
 <body>
@@ -44,44 +45,44 @@
         </div>
         <nav>
             <img src="~/Image/Logo.jpg" width="500" height="200" />
-        </nav>
+       </nav>
     </header>
 
-
+    
 
     <div class="container body-content">
         @RenderBody()
     </div>
-    <hr />
-    <footer>
+        <hr />
+        <footer>
 
-        <marquee>
-            <div class="row">
-                <div class="col-md-4">
+            <marquee>
+                <div class="row">
+                    <div class="col-md-4">
 
-                    <img src="~/Image/Logo.jpg" width="300px" height="150px" />
+                        <img src="~/Image/Logo.jpg" width="300px" height="150px" />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-md-6" id="Names">
+
+                        <h4>&copy;Efrat Edrei, Pnina Chen, Hadassah Esther Nehemia</h4>
+
+                    </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <div class="col-md-6" id="Names">
-
-                    <h4>&copy;Efrat Edrei, Pnina Chen, Hadassah Esther Nehemia</h4>
-
-                </div>
-            </div>
-        </marquee>
-        <aside>
-            <a class="navbar-collapse collapse" target="_blank" title="Facebook" href="https://www.facebook.com">
-                <img src="~/Image/facebook.jpg" width="50px" height="50px" />
-            </a>
-            <address>
+            </marquee>
+            <aside>
+                <a class="navbar-collapse collapse" target="_blank" title="Facebook" href="https://www.facebook.com">
+                    <img src="~/Image/facebook.jpg" width="50px" height="50px" />
+                </a>
+                <address>
                 <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
                 <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-            </address>
-        </aside>
-    </footer>
-
+                </address>
+            </aside>
+        </footer>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

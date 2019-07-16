@@ -3,9 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
 <style>
-    body {
+    /*#bd1 {
         background: url('../../Image/Menu.jpeg') no-repeat center center fixed;
         background-size: cover;
     }
@@ -17,64 +19,66 @@
         margin-bottom: 20px;
     }
 
-        .product > img {
-            border-radius: 15px;
-            box-shadow: 0 0 17px 3px #78767d;
-            transition: all 280ms linear;
-        }
+    .product > img {
+        border-radius: 15px;
+        box-shadow: 0 0 17px 3px #78767d;
+        transition: all 280ms linear;
+    }
 
-        .product:hover > img {
+        .product:hover > img{
             box-shadow: 0 0 12px 10px #78767d;
         }
 
         .product:hover > p > span {
             transition: all 280ms linear;
+            
             font-weight: bold;
         }
-
     .Search input {
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
-        border: 10px solid #F5C25F;
+        border: 10px solid #222229;
         width: 175px;
-        background: #F7DEAE;
+        background: #b1b1b3;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
-    }
+    }*/
+   
+
 </style>
-<body>
+<body id="bd1">
 
     <div class="col-md-12">@Html.ActionLink("Create a new menu", "Create", "Menus")</div>
     <aside>
         <div>
             @using (Html.BeginForm("Search", "Menus", FormMethod.Post))
             {
-                <div class="Search">
-                    <div class="col-md-3">
-                        <h4>Enter name of menu:</h4>
+            <div class="Search">
+                <div class="col-md-3">
+                    <h4>Enter name of menu:</h4>
 
-                        <input type="text" name="NameDuse">
+                    <input type="text" name="NameDuse">
 
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Enter from price:</h4>
-
-                        <input type="text" name="FromPrice">
-
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Enter until price:</h4>
-
-                        <input type="text" name="UntilPrice">
-
-                    </div>
-                    <div class="col-md-2">
-                        <br /><br />
-                        <button type="submit" value="Search" size="30" style="background-color:darkorange">Search</button>
-
-                    </div>
                 </div>
+                <div class="col-md-3">
+                    <h4>Enter from price:</h4>
+
+                    <input type="text" name="FromPrice">
+
+                </div>
+                <div class="col-md-3">
+                    <h4>Enter until price:</h4>
+
+                    <input type="text" name="UntilPrice">
+
+                </div>
+                <div class="col-md-2">
+                    <br /><br />
+                    <button type="submit" value="Search" size="30" style="background-color:#b1b1b3" >Search</button>
+
+                </div>
+            </div>
             }
         </div>
 
@@ -98,10 +102,12 @@
                             <div hidden>@item.Description</div>
                             <span> @item.Price₪</span>
 
-                            @if (Session["User"] != null)
+                           
+                            @*if (Session["User"] != null)
                             {
-                                <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
-                            }
+                            <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).Username</b>
+                            }*@
+
                             <br />
                         </p>
 
@@ -112,9 +118,11 @@
                         }
 
                         @*---------------------------------*@
-                        <div>
-                            @Html.ActionLink("Delete", "Delete", "Menus")
-                        </div>
+                        
+                            @Html.ActionLink("Delete", "Delete",new {id = item.IdMenu })|
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdMenu })|
+                            @Html.ActionLink("Details", "Details", new { id = item.IdMenu })
+                        
                     </div>
                 </div>
             }

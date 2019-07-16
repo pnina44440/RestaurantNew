@@ -22,9 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
 h1 {
     text-shadow: 2px 2px #ff0000;
 }
+
 div {
     column-gap: 40px;
 }
@@ -37,3 +39,125 @@ div {
     border-radius: 25px;
 }
 
+.form-horizontal input {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 10px solid #222229;
+    width: 175px;
+    background: #b1b1b3;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+#Names {
+    border: solid rgb(102,51,0);
+    border-radius: 10px;
+}
+
+    #Names h4 {
+        color: rgb(102,51,0);
+    }
+/*-----index-------*/
+#bd1 {
+    background: url('../../Image/Menu.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.product {
+    background-color: #ffffffb8;
+    border-radius: 15px;
+    padding: 20px 5px;
+    margin-bottom: 20px;
+}
+
+    .product > img {
+        border-radius: 15px;
+        box-shadow: 0 0 17px 3px #78767d;
+        transition: all 280ms linear;
+    }
+
+    .product:hover > img {
+        box-shadow: 0 0 12px 10px #78767d;
+    }
+
+    .product:hover > p > span {
+        transition: all 280ms linear;
+        font-weight: bold;
+    }
+
+.Search input {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 10px solid #222229;
+    width: 175px;
+    background: #b1b1b3;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.h3Home {
+    color: saddlebrown;
+    border: 2px solid saddlebrown;
+    border-radius: 25px;
+}
+/*--------contact----------*/
+.cform01 * {
+    font-family: arial;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+.cform01 {
+    border: 15px solid #000012;
+    width: 235px;
+    background: #e0dbd1;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+    .cform01 .fix {
+        clear: both;
+    }
+
+    .cform01 .brad5, .cform01 input, .cform01 textarea {
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .cform01 .inner {
+        border: 5px solid #e01b1b;
+        padding: 20px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+    }
+
+    .cform01 h3 {
+        margin: 0 0 10px;
+    }
+
+    .cform01 input, .cform01 textarea {
+        width: 100%;
+        padding: 8px 5px;
+        border: 2px solid #000012;
+    }
+
+    .cform01 .link1 {
+        float: left;
+        margin: 2%;
+        background: #828287;
+        padding: 5px 10px;
+        color: #ede8e8;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+.city {
+    color: #db2a0b;
+}

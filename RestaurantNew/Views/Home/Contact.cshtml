@@ -9,9 +9,11 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+   
     <style>
         /*** FORM 1 ***/
-        .cform01 * {
+        /*.cform01 * {
             font-family: arial;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -20,9 +22,9 @@
         }
 
         .cform01 {
-            border: 15px solid #F5C25F;
+            border: 15px solid #000012;
             width: 235px;
-            background: #F7DEAE;
+            background: #e0dbd1;
             -webkit-border-radius: 20px;
             -moz-border-radius: 20px;
             border-radius: 20px;
@@ -39,7 +41,7 @@
             }
 
             .cform01 .inner {
-                border: 5px solid #FADC76;
+                border: 5px solid #e01b1b;
                 padding: 20px;
                 -webkit-border-radius: 6px;
                 -moz-border-radius: 6px;
@@ -53,21 +55,25 @@
             .cform01 input, .cform01 textarea {
                 width: 100%;
                 padding: 8px 5px;
-                border: 2px solid #F5C25F;
+                border: 2px solid #000012;
             }
 
             .cform01 .link1 {
                 float: left;
                 margin: 2%;
-                background: #CF3B19;
+                background: #828287;
                 padding: 5px 10px;
-                color: #fff;
+                color: #ede8e8;
                 font-weight: bold;
                 text-decoration: none;
             }
+
+        .city {
+            color: #db2a0b;
+        }*/
     </style>
 </head>
-<body style="background-color:wheat ">
+<body style="background-color:#f2efe9 ">
     <div class="container ">
         <div class="row">
 
@@ -76,27 +82,27 @@
                 <h3> Our Branches</h3>
                 <ul style="list-style-type: disc">
                     <li>
-                        <h4>Jerusalem</h4>
+                        <h4 class="city">Jerusalem</h4>
                         <h5>King Gorg St.</h5>
                     </li>
                     <br />
                     <li>
-                        <h4>Tel-Aviv</h4>
+                        <h4 class="city">Tel-Aviv</h4>
                         <h5>Dizingoph St.</h5>
                     </li>
                     <br />
                     <li>
-                        <h4>Herzelya</h4>
+                        <h4 class="city">Herzelya</h4>
                         <h5>Shenkar St.</h5>
                     </li>
                     <br />
                     <li>
-                        <h4>Karmiel</h4>
+                        <h4 class="city">Karmiel</h4>
                         <h5>Yossef St.</h5>
                         <br />
                     </li>
                     <li>
-                        <h4>Haifa</h4>
+                        <h4 class="city">Haifa</h4>
                         <h5>Hrzel St.</h5>
                     </li>
 
@@ -119,63 +125,63 @@
                                 <textarea id="comments" name="comments" cols="1" rows="3" placeholder="גוף ההודעה"></textarea>
                                 <br />
 
-                                <input type="submit" value="Send" style="background-color:darkorange" />
+                                <input type="submit" value="Send" style="background-color:darkgray" />
                                 @* <div class="buttons">
-                                    <a href="#" class="link1 brad5" onclick="document.getElementById('form').submit()"><em><b>שליחה</b></em></a>
-                                                            <div class="fix"></div>*@
+        <a href="#" class="link1 brad5" onclick="document.getElementById('form').submit()"><em><b>שליחה</b></em></a>
+                                <div class="fix"></div>*@
                             </form>
+</div>
+                            
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
+            <div class="col-md-4">
 
-        </div>
+                </div>
 
-    </div>
+            </div>
 
 
-    <script type="text/javascript" charset="UTF-8">
-        function myMap() {
-            var mapCanvas = document.getElementById("map");
-            var myCenter = new google.maps.LatLng(31.771959, 35.217018);
-            var TelAviv = new google.maps.LatLng(32.109333, 34.855499);
-            var Haifa = new google.maps.LatLng(32.794044, 34.989571);
-            var Herzelya = new google.maps.LatLng(32.166313, 34.843311);
-            var Karmiel = new google.maps.LatLng(32.919945, 35.290146);
-            var mapOptions = { center: myCenter, zoom: 5 };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            var marker = new google.maps.Marker({
-                position: myCenter,
-                animation: google.maps.Animation.BOUNCE
-            });
-            var marker2 = new google.maps.Marker({
-                position: TelAviv,
-                animation: google.maps.Animation.BOUNCE
-            });
-            var marker3 = new google.maps.Marker({
-                position: Haifa,
-                animation: google.maps.Animation.BOUNCE
-            });
-            var marker4 = new google.maps.Marker({
-                position: Herzelya,
-                animation: google.maps.Animation.BOUNCE
-            });
-            var marker5 = new google.maps.Marker({
-                position: Karmiel,
-                animation: google.maps.Animation.BOUNCE
-            });
-            marker.setMap(map);
-            marker2.setMap(map);
-            marker3.setMap(map);
-            marker4.setMap(map);
-            marker5.setMap(map);
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOQecjiq8CEP664cBNSyqq3d8wM-F5Dbc&callback=myMap">
-    </script>
+            <script type="text/javascript" charset="UTF-8">
+                function myMap() {
+                    var mapCanvas = document.getElementById("map");
+                    var myCenter = new google.maps.LatLng(31.771959, 35.217018);
+                    var TelAviv = new google.maps.LatLng(32.109333, 34.855499);
+                    var Haifa = new google.maps.LatLng(32.794044, 34.989571);
+                    var Herzelya = new google.maps.LatLng(32.166313, 34.843311);
+                    var Karmiel = new google.maps.LatLng(32.919945, 35.290146);
+                    var mapOptions = { center: myCenter, zoom: 5 };
+                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                    var marker = new google.maps.Marker({
+                        position: myCenter,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    var marker2 = new google.maps.Marker({
+                        position: TelAviv,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    var marker3 = new google.maps.Marker({
+                        position: Haifa,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    var marker4 = new google.maps.Marker({
+                        position: Herzelya,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    var marker5 = new google.maps.Marker({
+                        position: Karmiel,
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    marker.setMap(map);
+                    marker2.setMap(map);
+                    marker3.setMap(map);
+                    marker4.setMap(map);
+                    marker5.setMap(map);
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOQecjiq8CEP664cBNSyqq3d8wM-F5Dbc&callback=myMap">
+            </script>
 
 
 </body>
