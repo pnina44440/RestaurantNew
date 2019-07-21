@@ -44,48 +44,82 @@
             </div>
         </div>
         <nav>
-            <img src="~/Image/Logo.jpg" width="500" height="200" />
-       </nav>
+            <div class="col-md-4">
+                <img src="~/Image/Logo.jpg" width="500" height="200" />
+            </div>
+            <div class="col-md-4">
+                <button id="submitButton">Get Weather</button>
+            </div>
+            <div class="col-md-8">
+                <table id="weatherTable"></table>
+            </div>
+        </nav>
     </header>
 
-    
+
 
     <div class="container body-content">
         @RenderBody()
     </div>
-        <hr />
-        <footer>
+    <hr />
+    <footer>
 
-            <marquee>
-                <div class="row">
-                    <div class="col-md-4">
+        <marquee>
+            <div class="row">
+                <div class="col-md-4">
 
-                        <img src="~/Image/Logo.jpg" width="300px" height="150px" />
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div class="col-md-6" id="Names">
-
-                        <h4>&copy;Efrat Edrei, Pnina Chen, Hadassah Esther Nehemia</h4>
-
-                    </div>
+                    <img src="~/Image/Logo.jpg" width="300px" height="150px" />
                 </div>
-            </marquee>
-            <aside>
-                <a class="navbar-collapse collapse" target="_blank" title="Facebook" href="https://www.facebook.com">
-                    <img src="~/Image/facebook.jpg" width="50px" height="50px" />
-                </a>
-                <address>
+                <br />
+                <br />
+                <br />
+                <div class="col-md-6" id="Names">
+
+                    <h4>&copy;Efrat Edrei, Pnina Chen, Hadassah Esther Nehemia</h4>
+
+                </div>
+            </div>
+        </marquee>
+        <aside>
+            <a class="navbar-collapse collapse" target="_blank" title="Facebook" href="https://www.facebook.com">
+                <img src="~/Image/facebook.jpg" width="50px" height="50px" />
+            </a>
+            <address>
                 <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
                 <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-                </address>
-            </aside>
-        </footer>
-    
+            </address>
+        </aside>
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+   
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+        <script>
+        $("#submitButton").click(function (e) {
+            $.ajax({
+                type: "POST",
+                url: "http://api.openweathermap.org/data/2.5/group?id=281184,293397,293396,294577,294801&appid=de6d52c2ebb7b1398526329875a49c57&units=metric",
+                dataType: "json",
+                success: function (result, status, xhr) {
+                    var newJson = "";
+                    for (i = 0; i < result.list.length; i++) {
+                        cityId = result.list[i].id;
+                        cityName = result.list[i].name;
+                        temp = result.list[i].main.temp
+                        pressure = result.list[i].main.pressure
+                        humidity = result.list[i].main.humidity
+                        tempmin = result.list[i].main.temp_min
+                        tempmax = result.list[i].main.temp_max
+
+                        $('#weatherTable').append('<tr><td>' + cityName + '</td><td>' + temp + '</td></tr>');
+                    }
+                }
+            });
+        });
+        </script>
 </body>
 </html>

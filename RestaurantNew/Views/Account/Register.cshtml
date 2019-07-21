@@ -2,83 +2,7 @@
 @{
     ViewBag.Title = "Register";
 }
-<style>
-    #Borderradius {
-        border: 2px solid brown;
-        border-radius: 5px;
-    }
-</style>
 <body>
-    @*<script src="JavaScript.js">
-     
-    </script>*@
-    <script>
-     
-        function myFunction() {
-            alert("try!!!!!");
-            alert("222!!!!!");
-            @*alert( @((RestaurantNew.Models.ApplicationUser)Session["User"]).Email);
-             @((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "123";
-
-            Session[Name] = ((RestaurantNew.Models.ApplicationUser)Session["User"]).;
-            var name = Request.Form("PhoneNumber")();
-            Session("Name") = PhoneNumber;*@
-            //if ((RestaurantNew.Models.ApplicationUser)Session["User"].PhoneNumber == "1") {
-            //    alert("try2!!!!!");
-            //}
-            Session["controlID"] = "This is my session";
-            alert((Session["controlID"]));
-
-            //if (Session["User"] != null) {
-            //    if (document.getElementById("defaultUnchecked").checked == true) {
-
-            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
-            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-            //    }
-            //    else if (document.getElementById("defaultUnchecked").checked == true) {
-
-            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
-            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-            //    }
-            //    else if (document.getElementById("defaultUnchecked").checked == true) {
-
-            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
-            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-            //    }
-            //    else if (document.getElementById("defaultUnchecked").checked == true) {
-
-            //        ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
-            //        alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-            //    }
-            //}
-        }
-        //function check()
-        //{
-        //    if (Session["User"] != null) {
-        //        if (document.getElementById("defaultUnchecked").checked == true) {
-
-        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "none";
-        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-        //        }
-        //        else if (document.getElementById("defaultUnchecked").checked == true) {
-
-        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "solder";
-        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-        //        }
-        //        else if (document.getElementById("defaultUnchecked").checked == true) {
-
-        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "student";
-        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-        //        }
-        //        else if (document.getElementById("defaultUnchecked").checked == true) {
-
-        //            ((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber = "manager";
-        //            alert((RestaurantNew.Models.ApplicationUser)Session["User"]).PhoneNumber );
-        //        }
-
-        //    }
-        //}
-    </script>
     <h2>@ViewBag.Title.</h2>
     <div class="row">
         <div class="col-md-5">
@@ -121,53 +45,52 @@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                     </div>
                 </div>
-                <h3> declare your position</h3>
-                <div class="col-md-12">
-                    @using (Html.BeginForm("CheckDiscountAfter", "Menus", FormMethod.Post))
-                    {
-                        <div id="Borderradius">
 
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="none" name="defaultExampleRadios" checked="False">
-                                <label class="custom-control-label" for="defaultUnchecked">none</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="solder" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">solder</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="student" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">student</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="manager" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">manager</label>
-                            </div>
+                @Html.BeginForm("CheckDiscountAfter", "Menu", FormMethod.Post)
+                { 
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-6" })
+                        
+                        <div class="col-md-10">
+
+                            @Html.RadioButtonFor(m => m.Status, "none")
+                            none
+                            @Html.RadioButtonFor(m => m.Status, "solder")
+                            solder
+                            @Html.RadioButtonFor(m => m.Status, "student")
+                            student
+                            @Html.RadioButtonFor(m => m.Status, "manager")
+                            manager
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" class="btn btn-default" value="Register" />
-                                <button onclick="myFunction()">Click me</button>
-
-                            </div>
+                    </div>
+                 }
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" value="Register" />
                         </div>
-                    }
-                </div>
-
-
-                    @*@if (Session["User"] != null)
-                {
-                    @((RestaurantNew.Models.ApplicationUser)Session["User"]).Phone=
-                }*@
-
-               
-                    }
-                </div>
-                <div class="col-md-7">
-                    <img src="~/Image/Club.jpeg" width="600" />
-                </div>
-            </div>
+                    </div>
+             }
+        </div>
+        <div class="col-md-7">
+            <img src="~/Image/Club.jpeg" width="600" />
+        </div>
+    </div>
+    @*$.ajax({
+    type: "POST",
+    url: '/Customer/LoadDataFromExcel?id=' + myID,
+    contentType: false,
+    processData: false,
+    data: data,
+    success: function(result) {
+    console.log(result);
+    },
+    error: function(xhr, status, p3, p4) {
+    var err = "Error " + " " + status + " " + p3 + " " + p4;
+    if (xhr.responseText && xhr.responseText[0] == "{")
+    err = JSON.parse(xhr.responseText).Message;
+    console.log(err);
+    }
+    });*@
 </body>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")

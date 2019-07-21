@@ -13,9 +13,6 @@ namespace RestaurantNew.Controllers
 {
     public class MenuWithSale
     { 
-        //    public Dog { get; set; }
-        //public string BreedName { get; set; }
-      
      public string NameDose { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
@@ -25,8 +22,7 @@ namespace RestaurantNew.Controllers
    }
 public class MenusController : Controller
     {
-        public string StatusRadios;
-        public string WhoCheck;
+        public string Status;
         public IQueryable<MenuWithSale>  resusultSale;
         public int DiscountAfter =5; 
         public string StatusSale = "None";
@@ -43,39 +39,12 @@ public class MenusController : Controller
         {
             return View();
         }
-        //public IQueryable<DogWithBreed> GetDogsWithBreedNames()
-        //{
-        //    var db = new DogDataContext(ConnectString);
-        //    var result = from d in db.Dogs
-        //                 join b in db.Breeds on d.BreedId equals b.BreedId
-        //                 select new DogWithBreed()
-        //                 {
-        //                     Dog = d,
-        //                     BreedName = b.BreedName
-        //                 };
-        //    return result;
-        //}
-
         [HttpPost]
-        public ActionResult CheckDiscountAfter1(string WhoCheck, string StatusRadios)
+        public IQueryable<MenuWithSale> CheckDiscountAfter(string Status)
         {
-            Debug.WriteLine(WhoCheck);
-            this.WhoCheck = WhoCheck;
-            this.StatusRadios = StatusRadios;
-            Debug.WriteLine(WhoCheck);
-            return View();
-        }
-
-        [HttpPost]
-        public  IQueryable<MenuWithSale> CheckDiscountAfter(string WhoCheck , string StatusRadios)
-        {
-            Debug.WriteLine(WhoCheck);
-            this.WhoCheck = WhoCheck;
-            this.StatusRadios = StatusRadios;
-            Debug.WriteLine(WhoCheck);
             //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
             var disc = from sale1 in db.Sales
-                       where WhoCheck == sale1.Name
+                       where Status == sale1.Name
                        select sale1;
 
             //מחזיר את ההנחה מתוצאת השאילתא
@@ -87,25 +56,59 @@ public class MenusController : Controller
 
 
             //---------מחזיר לclass שיצרנו -------------
-             resusultSale = from sale1 in db.Sales
-                          join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-                          join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-                          select new MenuWithSale()
-                          {
-                              NameDose = menu1.NameDose ,
-                              Description = menu1.Description,
-                              Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
-                              ImageUri = menu1.ImageUri,
-                              Categorya = menu1.Categorya
-                          };
+            resusultSale = from sale1 in db.Sales
+                           join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+                           join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+                           select new MenuWithSale()
+                           {
+                               NameDose = menu1.NameDose,
+                               Description = menu1.Description,
+                               Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
+                               ImageUri = menu1.ImageUri,
+                               Categorya = menu1.Categorya
+                           };
 
-            //---------------------------
-            Drinks();
-            Disserts();
-            // DiscountAfter = disc.Where(d => d.Discount == Session["User"]);
-            
+
+
             return resusultSale;
         }
+        //[HttpPost]
+        //public ActionResult CheckDiscountAfter(string WhoCheck , string StatusRadios)
+        //{
+        //    Debug.WriteLine(WhoCheck);
+        //    this.WhoCheck = WhoCheck;
+        //    this.StatusRadios = StatusRadios;
+        //    Debug.WriteLine(WhoCheck);
+        //    //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
+        //    var disc = from sale1 in db.Sales
+        //               where WhoCheck == sale1.Name
+        //               select sale1;
+
+        //    //מחזיר את ההנחה מתוצאת השאילתא
+        //    foreach (var x in disc)
+        //    {
+        //        DiscountAfter = x.Discount;
+        //    }
+
+
+
+        //    //---------מחזיר לclass שיצרנו -------------
+        //     resusultSale = from sale1 in db.Sales
+        //                  join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
+        //                  join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
+        //                  select new MenuWithSale()
+        //                  {
+        //                      NameDose = menu1.NameDose ,
+        //                      Description = menu1.Description,
+        //                      Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
+        //                      ImageUri = menu1.ImageUri,
+        //                      Categorya = menu1.Categorya
+        //                  };
+
+
+
+        //    return View("Index", resusultSale);
+        //}
         public ActionResult Disserts()   // מחזירה את הקינוחים לאחר שעידכנה אחוז הנחה מתאים ליוזר 
         {
 
@@ -156,7 +159,7 @@ public class MenusController : Controller
         {
             //var maindish = from m in db.Menus
             //               select m;
-            CheckDiscountAfter1(WhoCheck , StatusRadios);
+            resusultSale = CheckDiscountAfter(Status);
             resusultSale = resusultSale.Where(m => m.Categorya == 3);
 
             return View("Index", resusultSale);
