@@ -9,11 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using RestaurantNew.Models;
 
+
 namespace RestaurantNew.Controllers
 {
     public class MenuWithSale
-    { 
-     public string NameDose { get; set; }
+    {
+        public int IdMenu { get; set; }
+        public string NameDose { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
         public string ImageUri { get; set; }
@@ -23,11 +25,29 @@ namespace RestaurantNew.Controllers
 public class MenusController : Controller
     {
         public string Status;
-        public IQueryable<MenuWithSale>  resusultSale;
+        public static IEnumerable<MenuWithSale> resusultSale;
         public int DiscountAfter =5; 
         public string StatusSale = "None";
         public int IdSaleTime = 0; // 1= morning ' 2 = afternoon .  3=evening
         private ApplicationDbContext db = new ApplicationDbContext();
+     
+        private void InitialResultSale()
+        {
+            string UserStatus = (Session["User"] as ApplicationUser).UserStatus;
+
+            DiscountAfter = db.Sales.FirstOrDefault(s => s.Name == UserStatus).Discount;
+
+            resusultSale = from menu1 in db.Menus
+                           select new MenuWithSale()
+                           {
+                               IdMenu = menu1.IdMenu,
+                               NameDose = menu1.NameDose,
+                               Description = menu1.Description,
+                               Price = menu1.Price * (100 - DiscountAfter)/100,  //  sale1.Discount * menu1.Price  ,
+                               ImageUri = menu1.ImageUri,
+                               Categorya = menu1.Categorya
+                           };
+        }
 
         // GET: Menus
         public ActionResult Index()
@@ -37,153 +57,30 @@ public class MenusController : Controller
         
         public ActionResult List()
         {
+            InitialResultSale();
             return View();
         }
-        [HttpPost]
-        public IQueryable<MenuWithSale> CheckDiscountAfter(string Status)
-        {
-            //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
-            var disc = from sale1 in db.Sales
-                       where Status == sale1.Name
-                       select sale1;
-
-            //מחזיר את ההנחה מתוצאת השאילתא
-            foreach (var x in disc)
-            {
-                DiscountAfter = x.Discount;
-            }
-
-
-
-            //---------מחזיר לclass שיצרנו -------------
-            resusultSale = from sale1 in db.Sales
-                           join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-                           join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-                           select new MenuWithSale()
-                           {
-                               NameDose = menu1.NameDose,
-                               Description = menu1.Description,
-                               Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
-                               ImageUri = menu1.ImageUri,
-                               Categorya = menu1.Categorya
-                           };
-
-
-
-            return resusultSale;
-        }
-        //[HttpPost]
-        //public ActionResult CheckDiscountAfter(string WhoCheck , string StatusRadios)
-        //{
-        //    Debug.WriteLine(WhoCheck);
-        //    this.WhoCheck = WhoCheck;
-        //    this.StatusRadios = StatusRadios;
-        //    Debug.WriteLine(WhoCheck);
-        //    //מוצא את השורה מהטבלה  ההנחה הטבלה לפי מה שהיוזר במחר ברדיו ברגיסטר
-        //    var disc = from sale1 in db.Sales
-        //               where WhoCheck == sale1.Name
-        //               select sale1;
-
-        //    //מחזיר את ההנחה מתוצאת השאילתא
-        //    foreach (var x in disc)
-        //    {
-        //        DiscountAfter = x.Discount;
-        //    }
-
-
-
-        //    //---------מחזיר לclass שיצרנו -------------
-        //     resusultSale = from sale1 in db.Sales
-        //                  join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-        //                  join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-        //                  select new MenuWithSale()
-        //                  {
-        //                      NameDose = menu1.NameDose ,
-        //                      Description = menu1.Description,
-        //                      Price = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
-        //                      ImageUri = menu1.ImageUri,
-        //                      Categorya = menu1.Categorya
-        //                  };
-
-
-
-        //    return View("Index", resusultSale);
-        //}
+       
         public ActionResult Disserts()   // מחזירה את הקינוחים לאחר שעידכנה אחוז הנחה מתאים ליוזר 
-        {
-
-            //var dissert = from sale1 in db.Sales
-            //                   join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-            //                   join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-            //                   select new
-            //                   {
-            //                       a = menu1.NameDose,
-            //                       b = menu1.Description,
-            //                       c = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
-            //                       d = menu1.ImageUri,
-            //                       e = menu1.Categorya
-            //                   };
-
-
-            resusultSale = resusultSale.Where(d => d.Categorya == 1);
-
-            return View("Index", resusultSale);
+        {            
+            return View("Index", resusultSale.Where(m => m.Categorya == 1).ToList());
         }
-
-     
-
-     
-
         public ActionResult Drinks()
         {
-            //var drink = from m in db.Menus
-            //            select m;
-
-            //var drink = from sale1 in db.Sales
-            //              join menusale in db.MenuSales on sale1.Id equals menusale.SaleId
-            //              join menu1 in db.Menus on menusale.SaleId equals menu1.IdMenu
-            //              select new
-            //              {
-            //                  a = menu1.NameDose,
-            //                  b = menu1.Description,
-            //                  c = menu1.Price * DiscountAfter,  //  sale1.Discount * menu1.Price  ,
-            //                  d = menu1.ImageUri,
-            //                  e = menu1.Categorya
-            //              };
-
-            resusultSale = resusultSale.Where(d => d.Categorya == 2);
-
-            return View("Index", resusultSale);
+            return View("Index", resusultSale.Where(m => m.Categorya == 2).ToList());
         }
         public ActionResult Maindishes()
         {
-            //var maindish = from m in db.Menus
-            //               select m;
-            resusultSale = CheckDiscountAfter(Status);
-            resusultSale = resusultSale.Where(m => m.Categorya == 3);
-
-            return View("Index", resusultSale);
+            return View("Index", resusultSale.Where(m => m.Categorya == 3).ToList());
         }
 
         public ActionResult Starters()
-        {
-            //var start = from m in db.Menus
-            //            select m;
-
-            resusultSale = resusultSale.Where(s => s.Categorya == 4);
-
-            return View("Index", resusultSale);
+        {  
+            return View("Index", resusultSale.Where(m => m.Categorya == 4));
         }
         [HttpPost]
         public ActionResult Search( string NameDuse = "uu" ,int FromPrice = 0 ,int UntilPrice = 0)
         {
-            //List<string> Cars ;
-            //var menu = from m in db.Menus
-            //           where m.Price < UntilPrice && m.Price > FromPrice
-            //           group m.Price by m.IdMenu into g
-
-            //           select new { IdMenu = g.Key, cars = g.ToList() };
-            //---------------------
             var menu = from m in db.Menus
                        where (m.Price < UntilPrice) && (m.Price > FromPrice)
                        select m;
@@ -295,14 +192,7 @@ public class MenusController : Controller
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
         public int CheckSuitibleSale()
         {
 

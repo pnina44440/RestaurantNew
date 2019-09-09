@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RestaurantNew.Models;
@@ -80,6 +81,8 @@ namespace RestaurantNew.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUser user = UserManager.Users.FirstOrDefault(u => u.Email == model.Email) as ApplicationUser;
+                    Session["User"] = user;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -152,7 +155,8 @@ namespace RestaurantNew.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email /* IdNewUser = model.IdNewUser++ */};
+                // למה לא לשמור סטטוס בסשן?ואז להשתמש בו בפונק' הבאה?
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserStatus = model.Status /* IdNewUser = model.IdNewUser++ */};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

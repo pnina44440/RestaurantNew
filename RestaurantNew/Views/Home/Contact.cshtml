@@ -10,75 +10,12 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" />
-   
-    <style>
-        /*** FORM 1 ***/
-        /*.cform01 * {
-            font-family: arial;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .cform01 {
-            border: 15px solid #000012;
-            width: 235px;
-            background: #e0dbd1;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-        }
-
-            .cform01 .fix {
-                clear: both;
-            }
-
-            .cform01 .brad5, .cform01 input, .cform01 textarea {
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                border-radius: 5px;
-            }
-
-            .cform01 .inner {
-                border: 5px solid #e01b1b;
-                padding: 20px;
-                -webkit-border-radius: 6px;
-                -moz-border-radius: 6px;
-                border-radius: 6px;
-            }
-
-            .cform01 h3 {
-                margin: 0 0 10px;
-            }
-
-            .cform01 input, .cform01 textarea {
-                width: 100%;
-                padding: 8px 5px;
-                border: 2px solid #000012;
-            }
-
-            .cform01 .link1 {
-                float: left;
-                margin: 2%;
-                background: #828287;
-                padding: 5px 10px;
-                color: #ede8e8;
-                font-weight: bold;
-                text-decoration: none;
-            }
-
-        .city {
-            color: #db2a0b;
-        }*/
-    </style>
 </head>
-<body style="background-color:#f2efe9 ">
-    <div class="container ">
+    <body style="background-color:#f2efe9 ">
+    <div class="container">
+        <br />
         <div class="row">
-
-
-            <div class="col-md-3 ">
+            <div class="col-md-4">
                 <h3> Our Branches</h3>
                 <ul style="list-style-type: disc">
                     <li>
@@ -105,43 +42,13 @@
                         <h4 class="city">Haifa</h4>
                         <h5>Hrzel St.</h5>
                     </li>
-
                 </ul>
             </div>
-            <div class="col-md-8 ">
+            <div class="col-md-8">
                 <div id="map" style="width: 150%; height: 500px;" />
             </div>
-            <br /><br />
-            <div class="col-md-4 ">
-                <div class="cform cform01">
-                    <div class="inner">
-                        <h3>Contact</h3>
-
-                        <div class="">
-                            <form id="form">
-                                <input type="text" id="name" name="name" placeholder="Your name" />
-                                <input type="text" id="email" name="email" placeholder="Your email" />
-                                <input type="text" id="topic" name="topic" placeholder="Your phon" />
-                                <textarea id="comments" name="comments" cols="1" rows="3" placeholder="גוף ההודעה"></textarea>
-                                <br />
-
-                                <input type="submit" value="Send" style="background-color:darkgray" />
-                                @* <div class="buttons">
-        <a href="#" class="link1 brad5" onclick="document.getElementById('form').submit()"><em><b>שליחה</b></em></a>
-                                <div class="fix"></div>*@
-                            </form>
-</div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-
-                </div>
-
-            </div>
-
+        </div>
+    </div>
 
             <script type="text/javascript" charset="UTF-8">
                 function myMap() {
@@ -182,9 +89,7 @@
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOQecjiq8CEP664cBNSyqq3d8wM-F5Dbc&callback=myMap">
             </script>
-
-
-</body>
+    </body>
 </html>
 
 

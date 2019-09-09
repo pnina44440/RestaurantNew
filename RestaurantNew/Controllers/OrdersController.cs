@@ -48,17 +48,36 @@ namespace RestaurantNew.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "IdOrder,IdClub,IdMenu,DateForDay,Count")] Order order)
+        public ActionResult Create(int IdMenu,int Count)
         {
             if (ModelState.IsValid)
             {
+                var user = Session["User"] as ApplicationUser;
+                var custUser = db.CustUsers.FirstOrDefault(c => c.CustName == user.UserName);
+                Order order = new Order()
+                {
+                    Count = Count,
+                    Menu = db.Menus.FirstOrDefault(m => m.IdMenu == IdMenu),
+                   // User = db.CustUsers.FirstOrDefault(m => m.CustName == user.UserName),
+                    DateForDay = DateTime.Now,
+                    User = custUser != null ? custUser : new CustUser()
+                    {
+                        CustName = user.UserName,
+                        Password = user.PasswordHash
+                    },
+
+                };
+                //order.DateForDay = DateTime.Now;
+                //order.Menu = 
+                //order.User = Session["User"] as CustUser;
+                    
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", order.Menu);
-            return View(order);
+            ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "NameDose", IdMenu);
+            return View();
         }
 
         // GET: Orders/Edit/5
@@ -82,7 +101,7 @@ namespace RestaurantNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdOrder,IdClub,IdMenu,DateForDay,Count")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,User,Menu,DateForDay,Count")] Order order)
         {
             if (ModelState.IsValid)
             {

@@ -535,35 +535,6 @@ C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\roslyn\VBCSC
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\RestaurantNew.dll.config
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\RestaurantNew.dll
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\RestaurantNew.pdb
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AI.DependencyCollector.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AI.Web.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AI.WindowsServer.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.ApplicationInsights.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.Helpers.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.Mvc.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.Optimization.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.Razor.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.WebPages.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.WebPages.Deployment.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\System.Web.WebPages.Razor.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Antlr3.Runtime.pdb
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Newtonsoft.Json.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\EntityFramework.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\EntityFramework.SqlServer.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations._new.resources
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.GenerateResource.cache
 C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CoreCompileInputs.cache
@@ -657,3 +628,52 @@ F:\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.Cor
 F:\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.csproj.CopyComplete
 F:\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.dll
 F:\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.pdb
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\ApplicationInsights.config
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\csc.exe
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\vbc.exe
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\VBCSCompiler.exe
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\RestaurantNew.dll.config
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\RestaurantNew.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\bin\RestaurantNew.pdb
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.Migrations._new.resources
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.csproj.CopyComplete
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.dll
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.pdb
+C:\Users\Owner\Desktop\rest\New folder\RestaurantNew-master\RestaurantNew-master\RestaurantNew\obj\Debug\RestaurantNew.Migrations.abc.resources
+C:\Users\student\Desktop\new\RestaurantNew\bin\ApplicationInsights.config
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\csc.exe
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\vbc.exe
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\VBCSCompiler.exe
+C:\Users\student\Desktop\new\RestaurantNew\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\student\Desktop\new\RestaurantNew\bin\RestaurantNew.dll.config
+C:\Users\student\Desktop\new\RestaurantNew\bin\RestaurantNew.dll
+C:\Users\student\Desktop\new\RestaurantNew\bin\RestaurantNew.pdb
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.csprojAssemblyReference.cache
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.Migrations._new.resources
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.Migrations.abc.resources
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.csproj.GenerateResource.cache
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.csproj.CopyComplete
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.dll
+C:\Users\student\Desktop\new\RestaurantNew\obj\Debug\RestaurantNew.pdb
+C:\Users\hcc\Desktop\פרוייקט\git with rest\RestaurantNew\obj\Debug\RestaurantNew.Migrations.abc.resources

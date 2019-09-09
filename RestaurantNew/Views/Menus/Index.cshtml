@@ -1,89 +1,56 @@
-﻿@model IEnumerable<RestaurantNew.Models.Menu>
+﻿@*@model IEnumerable<RestaurantNew.Controllers.MenuWithSale>
+@model IEnumerable<RestaurantNew.Models.Menu>*@
 
+@model dynamic
 @{
     ViewBag.Title = "Index";
 }
 <head>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
 </head>
-<style>
-    /*#bd1 {
-        background: url('../../Image/Menu.jpeg') no-repeat center center fixed;
-        background-size: cover;
-    }
-
-    .product {
-        background-color: #ffffffb8;
-        border-radius: 15px;
-        padding: 20px 5px;
-        margin-bottom: 20px;
-    }
-
-    .product > img {
-        border-radius: 15px;
-        box-shadow: 0 0 17px 3px #78767d;
-        transition: all 280ms linear;
-    }
-
-        .product:hover > img{
-            box-shadow: 0 0 12px 10px #78767d;
-        }
-
-        .product:hover > p > span {
-            transition: all 280ms linear;
-            
-            font-weight: bold;
-        }
-    .Search input {
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        border: 10px solid #222229;
-        width: 175px;
-        background: #b1b1b3;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-    }*/
-   
-
-</style>
+<script>
+    $(document).on("click", ".passingID", function () {
+        var ids = $(this).attr('data-id');
+        $("#IdMenu").val(ids);
+    });
+</script>
 <body id="bd1">
+    <nav>
 
+        <div class="col-md-4">
+            <button id="submitButton">Get Weather</button>
+        </div>
+        <div class="col-md-8">
+            <table id="weatherTable"></table>
+        </div>
+    </nav>
     <div class="col-md-12">@Html.ActionLink("Create a new menu", "Create", "Menus")</div>
     <aside>
         <div>
             @using (Html.BeginForm("Search", "Menus", FormMethod.Post))
             {
-            <div class="Search">
-                <div class="col-md-3">
-                    <h4>Enter name of menu:</h4>
-
-                    <input type="text" name="NameDuse">
-
+                <div class="Search">
+                    <div class="col-md-3">
+                        <h4>Enter name of menu:</h4>
+                        <input type="text" name="NameDuse">
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Enter from price:</h4>
+                        <input type="text" name="FromPrice">
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Enter until price:</h4>
+                        <input type="text" name="UntilPrice">
+                    </div>
+                    <div class="col-md-2">
+                        <br /><br />
+                        <button type="submit" value="Search" size="30" style="background-color:#e01b1b">Search</button>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <h4>Enter from price:</h4>
-
-                    <input type="text" name="FromPrice">
-
-                </div>
-                <div class="col-md-3">
-                    <h4>Enter until price:</h4>
-
-                    <input type="text" name="UntilPrice">
-
-                </div>
-                <div class="col-md-2">
-                    <br /><br />
-                    <button type="submit" value="Search" size="30" style="background-color:#e01b1b" >Search</button>
-
-                </div>
-            </div>
             }
         </div>
-
     </aside>
-
     <div class="container ">
         <br />
         <div class="row text-center">
@@ -95,45 +62,31 @@
                         <p id="item">
                             <br />
                             <strong> @item.NameDose</strong>
-
                             <br />
                             @item.Description
                             <br />
                             <div hidden>@item.Description</div>
                             <span> @item.Price₪</span>
-
-                           
-                            @*if (Session["User"] != null)
-                            {
-                            <b>@((RestaurantNew.Models.ApplicationUser)Session["User"]).status</b>
-                            }*@
-
                             <br />
                         </p>
-
                         @using Microsoft.AspNet.Identity
                         @if (Request.IsAuthenticated)
                         {
-                            <button class="btn" data-toggle="modal" data-target="#myModal">Buy Dose</button>
+                            <button data-id="@item.IdMenu" class="passingID" data-toggle="modal" data-target="#myModal">Buy Dose</button>
                         }
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdMenu })|
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IdMenu })|
+                        @Html.ActionLink("Details", "Details", new { id = item.IdMenu })
 
-                        @*---------------------------------*@
-                        
-                            @Html.ActionLink("Delete", "Delete",new {id = item.IdMenu })|
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IdMenu })|
-                            @Html.ActionLink("Details", "Details", new { id = item.IdMenu })
-                        
                     </div>
                 </div>
             }
         </div>
         <br />
     </div>
-
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -147,15 +100,12 @@
                             <label for="psw"> How many?</label>
                             <input type="number" class="form-control" id="count" placeholder="" name="Count" />
                         </div>
-
-                        <input type="hidden" id="namedose" name="IdMenu" value="6" />
-
+                        @*<input type="hidden" id="namedose" name="IdMenu" value="6" />*@
+                        <input hidden="hidden" type="number" id="IdMenu" name="IdMenu" value="" />
                         <button class="btn btn-block">
                             Pay
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -166,4 +116,35 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+        $("#submitButton").click(function (e) {
+            $("#weatherTable tr").remove();
+
+            $.ajax({
+                type: "POST",
+                url: "http://api.openweathermap.org/data/2.5/group?id=281184,293397,293396,294577,294801&appid=de6d52c2ebb7b1398526329875a49c57&units=metric",
+                dataType: "json",
+                success: function (result, status, xhr) {
+                    var newJson = "";
+
+                    for (i = 0; i < result.list.length; i++) {
+                        cityId = result.list[i].id;
+                        cityName = result.list[i].name;
+                        temp = result.list[i].main.temp
+                        pressure = result.list[i].main.pressure
+                        humidity = result.list[i].main.humidity
+                        tempmin = result.list[i].main.temp_min
+                        tempmax = result.list[i].main.temp_max
+
+                        $('#weatherTable').append('<tr><td>' + cityName + '</td><td>' + temp + '</td></tr>').toggle();
+
+                    }
+
+                }
+            });
+        });
+    </script>
 </body>
